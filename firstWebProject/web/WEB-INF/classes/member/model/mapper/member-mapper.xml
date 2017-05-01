@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="membermapper">
+	<resultMap type="member" id="memberResult">
+		<id property="userId" column="member_id"/>
+		<result property="userPwd" column="member_pwd"/>
+		<result property="userName" column="member_name"/>
+		<result property="email" column="member_email"/>
+		<result property="phone" column="member_phone"/>
+		<result property="address" column="member_address"/>
+		<result property="gender" column="member_gender"/>
+		<result property="birth" column="member_birth"/>
+		<result property="hobby" column="member_hobby"/>
+	</resultMap>
+	<select id="memberLogIn" resultMap="memberResult">
+	select * from member where userid = #{userId} and userpwd = #{userPwd}</select>
+	<select id="memberInsert" resultMap="memberResult">
+	insert into member values (#{userId}, #{userPwd}, #{userName}, #{email}, #{phone}, #{address}, #{gender}, #{birth}, #{hobby})</select>
+	<select id="memberSelect" resultMap="memberResult">
+	select * from member where userid = #{userId}</select>
+	<select id="memberDelete" resultMap="memberResult">
+	delete from member where userid = #{userId}</select>
+	<select id="memberUpdate" resultMap="memberResult">
+	update member set userpwd = #{userPwd}, email = #{email}, gender = #{gender}, phone = #{phone}, address = #{address}, birth = #{birth}, hobby = #{hobby} where userid = #{userId}</select>
+</mapper>
+

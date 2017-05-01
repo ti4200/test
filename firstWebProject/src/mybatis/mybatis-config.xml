@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE configuration PUBLIC
+"-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- alias 지정해 놓음  -->
+	<typeAliases>
+		<typeAlias type="board.model.vo.Board" alias="Board"/>
+		<typeAlias type="member.model.vo.Member" alias="Member"/>
+	</typeAliases>
+	<!-- environments - environment : db와 연결해줌, 여러가지 db를 세팅해놓을 수 있고, 실질적으로 사용할 db서버는 id로 분류한다! -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
+				<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe" />
+				<property name="username" value="jstl" />
+				<property name="password" value="jstl" />
+			</dataSource>
+		</environment>
+	</environments>
+	<!-- 쿼리문을 따로 저장해 놓음 -->
+	<mappers>
+		<mapper resource="board\mapper\board-mapper.xml" />
+		<mapper resource="member\mapper\member-mapper.xml" />
+	</mappers>
+</configuration>
